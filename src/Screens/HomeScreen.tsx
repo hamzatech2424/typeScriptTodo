@@ -34,6 +34,18 @@ const HomeScreen: React.FC<Props> = ({ }) => {
         setTodoArray(filterdResults)
     }
 
+    const updateTodo = (selectedId:string):void => {
+        const newArr:ItoDoObject[] = [...todoArray]
+
+        newArr.map((item)=>{
+          item._id == selectedId
+              item.work = 'hamza'
+        })   
+        
+        setTodoArray(newArr)
+
+    }
+
     return (
         <SafeAreaView style={styles.mainContainer}>
             <View style={styles.viewOne}>
@@ -63,7 +75,7 @@ const HomeScreen: React.FC<Props> = ({ }) => {
 
             <View style={styles.viewFour}>
                 {todoArray.map((item, index) => {
-                    return <TodoItem item={item} key={index} removeTodo={removeTodo} />
+                    return <TodoItem item={item} key={index} removeTodo={removeTodo} updateTodo={updateTodo} />
                 })}
 
             </View>
